@@ -71,3 +71,7 @@ li:first-letter {
 .weather-temperature .active:hover {
   text-decoration: none;
 }
+.weather-forecast {
+  border: 2px #02227a;
+  margin-top: 20px;
+}
