@@ -50,7 +50,8 @@ function displayForecast() {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "accd6b75554184ea54b4d2360ba258b0";
-  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  console.log(apiURL);
 }
 
 function displayTemperature(response) {
