@@ -22,6 +22,24 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML =  `<div class="row">
+              <div class="col-2">
+                <div class="forecast-date">SUN</div>
+                <img
+                  src="http://openweathermap.org/img/wn/10d@2x.png"
+                  alt=""
+                  width="35"
+                />
+                <div class="forecast-temp">
+                  <span class="temp-min">50F</span>
+                  <span class="temp-max">73F</span>
+                </div>
+              </div>
+            </div>
+}`;
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -87,4 +105,5 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
+displayForecast();
 search("Atlanta");
