@@ -69,8 +69,24 @@ function displayForecast(response) {
     }
   });
 
+  function displayForecast(response) {
+      let forecastElement = document.querySelector("#forecast");
+      forecastElement.innerHTML = `
+      <div class="weather-forecast" id="forecast">
+    <div class="row">
+      <div class="col-2">
+        <div class="forecast-date">SAT</div>
+        <div class="icon">🌤</div>
+        <div class="forecast-temp">
+          <span class="temp-min">51°</span>
+          <span class="temp-max">73°</span>
+        </div>
+      </div>
+    </div>
+  </div>; `
+
   forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = "forecast";
+  
 }
 
 function getForecast(coordinates) {
