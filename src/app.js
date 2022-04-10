@@ -69,9 +69,11 @@ function displayForecast(response) {
   });
 
   function displayForecast() {
-      let forecastElement = document.querySelector("#forecast");
-      let forecastHTML = "";
-      forecastHTML = `
+    let forecastElement = document.querySelector("#forecast");
+    let forecastHTML = "";
+    forecastHTML =
+      forecastHTML +
+      `
       <div class="weather-forecast" id="forecast">
     <div class="row">
       <div class="col-2">
@@ -85,62 +87,61 @@ function displayForecast(response) {
         </div>
       </div>
     </div>
-  </div>; `
-      forecastElement.innerHTML = forecastHTML;
+  </div>; `;
+    forecastElement.innerHTML = forecastHTML;
+  }
 
-  
+  function getForecast(coordinates) {
+    let apiKey = "accd6b75554184ea54b4d2360ba258b0";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+    axios.get(apiUrl).then(displayForecast);
+  }
+
+  function showTemperature(response) {
+    document.querySelector("city").innerHTML = response.data.name;
+    document.querySelector("temperature").innerHTML = Math.round(
+      response.data.main.temp
+    );
+    document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+    document.querySelector("#wind").innerHTML = Math.round(
+      response.data.wind.speed
+    );
+    document.querySelector("#description").innerHTML =
+      response.data.weather[0].main;
+    document.querySelector("#date").innerHTML = formatDate(
+      response.data.dt * 1000
+    );
+
+    fahrenheitTemp = response.data.main.temp;
+
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+    iconElement.setAttribute("alt", response.data.weather[0].description);
+
+    getForecast(response.data.coord);
+  }
+
+  function searchCity(city) {
+    let apiKey = "accd6b75554184ea54b4d2360ba258b0";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid=${apiKey}`;
+    axios.get(apiUrl).then(showTemperature);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    let city = document.querySelector("#search-text-input").value;
+    searchCity(city);
+  }
+
+  let form = document.querySelector("#search-form");
+  form.addEventListener("submit", handleSubmit);
+
+  let fahrenheitTemp = null;
+
+  searchCity("Atlanta");
+
+  displayForecast();
 }
-
-function getForecast(coordinates) {
-  let apiKey = "accd6b75554184ea54b4d2360ba258b0";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
-  axios.get(apiUrl).then(displayForecast);
-}
-
-function showTemperature(response) {
-  document.querySelector("city").innerHTML = response.data.name;
-  document.querySelector("temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
-  document.querySelector("#date").innerHTML = formatDate(
-    response.data.dt * 1000
-  );
-
-  fahrenheitTemp = response.data.main.temp;
-
-  let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
-
-  getForecast(response.data.coord);
-}
-
-function searchCity(city) {
-let apiKey = "accd6b75554184ea54b4d2360ba258b0";
-let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid=${apiKey}`;
-  axios.get(apiUrl).then(showTemperature);
-}
-
-function handleSubmit(event) {
-  event.preventDefault();
-  let city = document.querySelector("#search-text-input").value;
-  searchCity(city);
-}
-
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleSubmit);
-
-let fahrenheitTemp = null;
-
-searchCity("Atlanta");
-
-displayForecast();
