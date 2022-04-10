@@ -80,3 +80,8 @@ li:first-letter {
   text-align: center;
   font-size: 15px;
 }
+
+.forecast-temp {
+  text-align: center;
+  font-size: 15px;
+}
