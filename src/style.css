@@ -29,6 +29,10 @@ li:first-letter {
   text-transform: capitalize;
 }
 
+img {
+  margin: 0;
+}
+
 .weather-app-wrapper {
   max-width: 600px;
   margin: 30px auto;
@@ -84,11 +88,6 @@ li:first-letter {
 .forecast-temp {
   text-align: center;
   font-size: 15px;
-}
-
-.icon {
-  text-align: center;
-  margin: 0;
 }
 
 .temp-min {
