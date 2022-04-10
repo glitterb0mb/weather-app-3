@@ -70,24 +70,23 @@ function displayForecast(response) {
 
   function displayForecast() {
     let forecastElement = document.querySelector("#forecast");
-    let forecastHTML = "";
+    let forecastHTML = `<div class="row">`;
     forecastHTML =
       forecastHTML +
       `
-      <div class="weather-forecast" id="forecast">
-    <div class="row">
       <div class="col-2">
         <div class="forecast-date">SAT</div>
         <img src="http://openweathermap.org/img/wn/10d@2x.png"
         alt=""
         width="40" />
         <div class="forecast-temp">
-          <span class="temp-min">⬇ 51°</span>
-          <span class="temp-max">⬆ 73°</span>
+          <span class="temp-min">⬇ °F</span>
+          <span class="temp-max">⬆ °F</span>
         </div>
       </div>
     </div>
   </div>; `;
+    forecastHTML = `</div>`;
     forecastElement.innerHTML = forecastHTML;
   }
 
