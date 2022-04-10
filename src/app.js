@@ -76,7 +76,9 @@ function displayForecast(response) {
     <div class="row">
       <div class="col-2">
         <div class="forecast-date">SAT</div>
-        <div class="icon">🌤</div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png"
+        alt=""
+        width="40" />
         <div class="forecast-temp">
           <span class="temp-min">⬇ 51°</span>
           <span class="temp-max">⬆ 73°</span>
@@ -85,9 +87,7 @@ function displayForecast(response) {
     </div>
   </div>; `
       forecastElement.innerHTML = forecastHTML;
-      forecastElement.innerHTML = 
 
-  forecastHTML = forecastHTML + `</div>`;
   
 }
 
