@@ -46,8 +46,7 @@ function displayForecast(response) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
-        `
-        <div class="col-2">
+        ` <div class="col-2">
           <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
           
           <img
@@ -69,7 +68,7 @@ function displayForecast(response) {
     }
   });
 
-  function displayForecast(response) {
+  function displayForecast() {
       let forecastElement = document.querySelector("#forecast");
       forecastElement.innerHTML = `
       <div class="weather-forecast" id="forecast">
@@ -78,8 +77,8 @@ function displayForecast(response) {
         <div class="forecast-date">SAT</div>
         <div class="icon">🌤</div>
         <div class="forecast-temp">
-          <span class="temp-min">51°</span>
-          <span class="temp-max">73°</span>
+          <span class="temp-min">⬇ 51°</span>
+          <span class="temp-max">⬆ 73°</span>
         </div>
       </div>
     </div>
@@ -123,8 +122,8 @@ function showTemperature(response) {
 }
 
 function searchCity(city) {
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+let apiKey = "accd6b75554184ea54b4d2360ba258b0";
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemperature);
 }
 
@@ -134,16 +133,6 @@ function handleSubmit(event) {
   searchCity(city);
 }
 
-function searchLocation(position) {
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showTemperature);
-}
-
-function getCurrentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchLocation);
-}
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
