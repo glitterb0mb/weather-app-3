@@ -90,3 +90,7 @@ li:first-letter {
   text-align: center;
   margin: 0;
 }
+
+.temp-min {
+  opacity: 0.65;
+}
