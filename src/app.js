@@ -62,6 +62,7 @@ function displayForecast() {
   });
 
   forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
 }
 
 function showTemperature(response) {
@@ -99,7 +100,7 @@ function searchCity(city) {
 
 function handleSubmit(event) {
   event.preventDefault();
-  let city = document.querySelector("#search-text-input").value;
+  let city = document.querySelector("#city-input").value;
   searchCity(city);
 }
 
