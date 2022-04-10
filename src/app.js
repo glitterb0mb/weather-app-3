@@ -70,7 +70,8 @@ function displayForecast(response) {
 
   function displayForecast() {
       let forecastElement = document.querySelector("#forecast");
-      forecastElement.innerHTML = `
+      let forecastHTML = "";
+      forecastHTML = `
       <div class="weather-forecast" id="forecast">
     <div class="row">
       <div class="col-2">
@@ -83,6 +84,8 @@ function displayForecast(response) {
       </div>
     </div>
   </div>; `
+      forecastElement.innerHTML = forecastHTML;
+      forecastElement.innerHTML = 
 
   forecastHTML = forecastHTML + `</div>`;
   
@@ -133,11 +136,11 @@ function handleSubmit(event) {
   searchCity(city);
 }
 
-
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 let fahrenheitTemp = null;
 
 searchCity("Atlanta");
+
 displayForecast();
