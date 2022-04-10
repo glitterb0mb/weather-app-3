@@ -85,3 +85,8 @@ li:first-letter {
   text-align: center;
   font-size: 15px;
 }
+
+.icon {
+  text-align: center;
+  margin: 0;
+}
